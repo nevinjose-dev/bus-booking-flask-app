@@ -1,0 +1,42 @@
+<h1>Admin Dashboard</h1>
+
+<a href="/add-bus">
+    Add New Bus
+</a>
+
+<a href="/admin-logout">
+    Logout
+</a>
+
+<hr>
+
+{% for bus in buses %}
+
+    <h3>{{ bus.bus_name }}</h3>
+
+    <p>
+        {{ bus.source }}
+        →
+        {{ bus.destination }}
+    </p>
+
+    <p>
+        Available Seats: {{ bus["available_seats"] }}
+    </p>
+
+    <a href="/update-bus/{{ bus.id }}">
+        Update
+    </a>
+
+    <form action="/delete-bus/{{ bus.id }}"
+          method="POST">
+
+        <button type="submit">
+            Delete
+        </button>
+
+    </form>
+
+    <hr>
+
+{% endfor %}
